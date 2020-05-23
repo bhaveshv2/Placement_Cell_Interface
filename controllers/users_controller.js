@@ -1,10 +1,18 @@
 //Controller for the Employee(user) 
 const User = require('../models/user');
 
+//render home page
+module.exports.home = function (req, res) {
+    return res.render("home", {
+      title: "Placements Cell | Home",
+    });
+  };
+  
+
 //controller for the signup page
 module.exports.signUp = function(req,res){
     if(req.isAuthenticated()){
-        return res.redirect('home',{title:'Home | Placements'});
+        return res.redirect('/users/home');
     }
     return res.render('user_sign_up',{title:'Placements | SignUp'});
 }
@@ -12,7 +20,7 @@ module.exports.signUp = function(req,res){
 //controller for the signin page
 module.exports.signIn = function(req,res){
     if(req.isAuthenticated()){
-        return res.redirect('home',{title:'Home | Placements'});
+        return res.redirect('/users/home');
     }
     return res.render('user_sign_in',{title:'Placements | SignIn'});
 }

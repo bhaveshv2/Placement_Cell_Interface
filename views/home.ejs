@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/home.css">
+
+<div id="home-container">
+    <%if(locals.user){%>
+        <div id="user-name">
+            <h3>Welcome <%=user.name%></h3>
+        </div>
+    <%}else{%>
+        <div id="signin-signup-container">
+            <%-include('user_sign_in'); -%>
+            <%-include('user_sign_up'); -%>
+        </div>
+    <%}%>
+</div>
