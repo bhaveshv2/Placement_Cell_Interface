@@ -2,8 +2,14 @@
 
 <div id="home-container">
     <%if(locals.user){%>
-        <div id="user-name">
-            <h3>Welcome <%=user.name%></h3>
+        <div id="display">
+            <div id="user-name">
+                <h3>Welcome <%=user.name%>,</h3>
+            </div>
+            <div id="options">
+                <a href="/students/fetch" class="btn btn-primary">Students</a>
+
+            </div>
         </div>
     <%}else{%>
         <div id="signin-signup-container">

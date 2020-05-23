@@ -6,17 +6,22 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    email:{
+        type:String,
+        unique:true,
+        required:true,
+    },
+    batch:{
+        type:String,
+        required:true,
+    },
     college: {
         type: String,
         required: true,
     },
     status: {
         type: String,
-        enum: ["placed", "not_placed"],
-    },
-    batch: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Batch",
+        enum: ["Placed", "Not_Placed"],
     },
     score:{
         type: mongoose.Schema.Types.ObjectId,

@@ -3,16 +3,20 @@ const mongoose = require('mongoose');
 
 const courseScoreSchema = new mongoose.Schema({
     dsa:{
-        type:Numbe,
+        type:Number,
         required:true,
     },
     webd:{
-        type:Numbe,
+        type:Number,
         required:true,
     },
     react:{
-        type:Numbe,
+        type:Number,
         required:true,
+    },
+    student:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Student'
     }
 },{
     timestamps:true,
