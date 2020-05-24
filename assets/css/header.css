@@ -7,6 +7,10 @@ header{
     width: 100%;
 }
 
+#logo a:hover{  
+    text-decoration:none;
+}
+
 #welcome-text{
     width: 30%;
     display: flex;
