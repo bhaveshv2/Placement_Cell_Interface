@@ -5,7 +5,7 @@ const Student = require('../models/student');
 module.exports.scheduleInterview = async function(req,res){
     try{
         let interview = await Interview.findById(req.params.id).populate({
-            path:'listofstudents',
+            path:'listofstudents.student',
             model:'Student'
         });
 
@@ -25,16 +25,15 @@ module.exports.scheduleInterview = async function(req,res){
 //Controller for Adding the students and schedule the interview
 module.exports.addStudent = async function(req,res){
     try{
-        //Directly adding student to the interview, so that we can schedule interview at different date
         let schInterview = await Interview.findById(req.params.id).populate({
-            path:'listofstudents',
+            path:'listofstudents.student',
             model:'Student'
         });
-        console.log(schInterview);
+        
         if(schInterview){
-            let date =  schInterview.listofstudents;
-            for(let i=0;i<date.length;i++){
-                if(date[i].date == req.body.date){
+            let student =  schInterview.listofstudents;
+            for(let i=0;i<student.length;i++){
+                if(student[i].student == req.body.student){
                     console.log('Already Scheduled on the same date');
                     return res.redirect('back');
                 }
@@ -65,9 +64,9 @@ module.exports.updateResult = async function(req,res){
             let stid = schInterview.listofstudents;
         
             for(let i=0;i<stid.length;i++){
-                
+                console.log('inside loop');
                 if(stid[i].student==studentID){
-                    
+                    console.log('inside student')
                     stid[i].result = req.body.result;
                     schInterview.save();
                     return res.redirect('back');

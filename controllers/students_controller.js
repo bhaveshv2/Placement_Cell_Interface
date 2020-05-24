@@ -63,17 +63,3 @@ module.exports.fetchStudents = async function(req,res){
         return res.redirect('back');
     }
 }
-
-//Controller for delete the student
-module.exports.deleteStudent = async function(req,res){
-    try{   
-        let student = await Student.findById(req.params.id);
-        await CourseScore.findByIdAndDelete(student.score);
-
-        await Student.findByIdAndDelete(req.params.id);
-        return res.redirect('back');
-    }catch(err){
-        console.log('*** Error in Deletion the student ***',err);
-        return res.redirect('back');
-    }
-}

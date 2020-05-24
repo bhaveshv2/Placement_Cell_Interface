@@ -12,5 +12,6 @@ router.use('/users', require('./users'));
 router.use('/students',passport.checkAuthentication,require('./students'));
 router.use('/interviews',passport.checkAuthentication,require('./interviews'));
 router.use('/scheduling',passport.checkAuthentication,require('./interviewSchedules'));
+router.use('/csv',passport.checkAuthentication,require('./csv'));
 
 module.exports=router;
