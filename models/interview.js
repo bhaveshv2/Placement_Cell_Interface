@@ -7,13 +7,13 @@ const interviewSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
-        date: {
+    date: {
         type: Date,
         required: true,
     },
 
     /*Taking Array of selected student with there result so that whenever 
-    a particular interview selected so the list all the students with their results*/
+    a particular interview selected so the list of all the students with their results*/
     applications: [{
         student: {
             type: mongoose.Schema.Types.ObjectId,

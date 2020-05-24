@@ -12,7 +12,7 @@
             <input type="text" name="name" id="student-name" class="form-control" placeholder="Name" required>
             <input type="email" name="email" id="student-email" class="form-control" placeholder="Email" required>
             <input type="text" name="college" id="student-college" class="form-control" placeholder="College Name" required>
-            <label for="batch">Batch</label>
+            
             <select name="batch" id="select-batch" class="">
                 <option value="" disabled selected>Select Batch</option>
                 <option value="Career Camp">Career Camp</option>
@@ -20,8 +20,15 @@
                 <option value="Alchemy">Alchemy</option>
                 <option value="Cognizense">Cognizense</option>
             </select>
-            <input type="text" name="dsa" placeholder="Data Structures and algo Score" class="form-control">
-            <input type="text" name="webd" placeholder="Web Development Score" class="form-control">
+
+            <select name="status" id="select-status">
+                <option value="" disabled selected>Select Status</option>
+                <option value="Placed"> Placed </option>
+                <option value="Not_Placed"> Not Placed</option>
+            </select>
+
+            <input type="text" name="dsa" placeholder="Data SA Score" class="form-control">
+            <input type="text" name="webd" placeholder="Web Dev Score" class="form-control">
             <input type="text" name="react" placeholder="Reactjs Score" class="form-control">
             <input type="submit" value="Add Student" class="btn btn-success"> 
         </form>
@@ -31,21 +38,18 @@
         <table id="student-table" class="table table-dark">
             <thead class="thead-light">
                 <tr>
-                    <th>Student_ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Batch</th>
-                    <th>College</th>
-                    <th>Status</th>
-                    <th colspan="3">
-                        <tr colspan="3">Scores</tr>
-                        <tr>
-                            <th>DSA</th>
-                            <th>WebD</th>
-                            <th>React</th>
-                        </tr>
-                    </th>
-                    <th>Edit</th>
+                    <th rowspan="2">Student_ID</th>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Email</th>
+                    <th rowspan="2">Batch</th>
+                    <th rowspan="2">College</th>
+                    <th rowspan="2">Status</th>
+                    <th colspan="3" style="text-align: center;">Scores</th>
+                </tr>
+                <tr>
+                    <th>DSA</th>
+                    <th>WEBD</th>
+                    <th>REACT</th>
                 </tr>
             </thead>
             <tbody class="table-hover">
@@ -60,7 +64,7 @@
                         <td><%=s.score.dsa%></td>
                         <td><%=s.score.webd%></td>
                         <td><%=s.score.react%></td>
-                        <td><a href="#">Edit</a></td>
+                        <td><a href="/students/delete/<%=s._id%>">Delete</a></td>
                     </tr>
                 <%}%>
             </tbody>

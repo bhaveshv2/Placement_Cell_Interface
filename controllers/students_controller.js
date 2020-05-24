@@ -2,7 +2,7 @@
 const Student = require('../models/student');
 const CourseScore = require('../models/coursescore');
 
-// const Interview = require('../models/interview');
+const Interview = require('../models/interview');
 
 //Controller for creating the new student
 module.exports.createStudent = async function(req,res){
@@ -17,6 +17,7 @@ module.exports.createStudent = async function(req,res){
                 email:req.body.email,
                 college:req.body.college,
                 batch:req.body.batch,
+                status:req.body.status,
             });
 
             let score = await CourseScore.create({
@@ -59,6 +60,20 @@ module.exports.fetchStudents = async function(req,res){
         });
     }catch(err){
         console.log('*** Error in fetching of students ***',err);
+        return res.redirect('back');
+    }
+}
+
+//Controller for delete the student
+module.exports.deleteStudent = async function(req,res){
+    try{   
+        let student = await Student.findById(req.params.id);
+        await CourseScore.findByIdAndDelete(student.score);
+
+        await Student.findByIdAndDelete(req.params.id);
+        return res.redirect('back');
+    }catch(err){
+        console.log('*** Error in Deletion the student ***',err);
         return res.redirect('back');
     }
 }
