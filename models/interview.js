@@ -7,17 +7,23 @@ const interviewSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
-    date: {
-        type: Date,
-        required: true,
+    profile:{
+        type:String,
+        required:true,
     },
 
     /*Taking Array of selected student with there result so that whenever 
     a particular interview selected so the list of all the students with their results*/
-    applications: [{
+    listofstudents: [{
         student: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Student",
+        },
+        date: {
+            type: {
+                $dateToString: { format: "%d-%m-%Y", date: "$date"},
+            },
+            required: true,
         },
         result: {
             type: String,
