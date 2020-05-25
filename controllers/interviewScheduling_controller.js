@@ -64,9 +64,9 @@ module.exports.updateResult = async function(req,res){
             let stid = schInterview.listofstudents;
         
             for(let i=0;i<stid.length;i++){
-                console.log('inside loop');
+                
                 if(stid[i].student==studentID){
-                    console.log('inside student')
+                    
                     stid[i].result = req.body.result;
                     schInterview.save();
                     return res.redirect('back');
