@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="/css/scheduleinterview.css">
+
 <div id="schedule-interview-container">
     <div id="title">
         <h1>Placement | Scheduling Interview | <%=interview.company%>/<%=interview.profile%></h1>
     </div>
 
-    <div id="add-student-form">
+    <div id="add-student-form" class="card mt-5">
         <form class="form-group" action="/scheduling/adding-student/<%=interview._id%>" method="POST">
             <input type="date" name="date" id="date-of-interview" class="form-control" required>
             <select name="student" required>
